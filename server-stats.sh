@@ -27,3 +27,22 @@ echo "-------------------------------------"
 ps -eo pid,comm,%mem --sort=-%mem | head -n 6
 echo ""
 
+echo "OS version:"
+cat /etc/os-release
+echo ""
+
+echo "Uptime:"
+uptime
+echo ""
+
+echo "Load Average:"
+uptime | awk '{print " Load Average: ", $9}'
+echo ""
+
+echo "Logged-in Users:"
+who
+echo ""
+
+echo "Failed Login Attempts:"
+journalctl -xe | grep "Failed password" 
+echo ""
